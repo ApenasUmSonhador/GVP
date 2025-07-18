@@ -64,14 +64,11 @@ public class EmprestimoForm extends JFrame {
 
     private void carregarItens() {
         ItemDAO itemDAO = new ItemDAO();
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
-
         int meuId = Session.getUsuario().getId();
         List<Item> todos = itemDAO.listarPorDono(String.valueOf(meuId));
-        List<Integer> jaEmprestados = emprestimoDAO.getIdsDeItensEmprestados();
 
         for (Item i : todos) {
-            if (i.getType() != ItemType.UNDERWEAR && !jaEmprestados.contains(i.getId())) {
+            if (i.podeEmprestar()) {
                 cbItens.addItem(i);
             }
         }

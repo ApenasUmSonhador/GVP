@@ -50,9 +50,7 @@ public class LavagemForm extends JFrame {
         itensLavaveis = new ArrayList<>();
         List<Item> todos = new ItemDAO().listarNaoEmprestadosDoUsuario(String.valueOf(usuarioLogado));
         for (Item i : todos) {
-            if (!i.getOwnerId().equals(String.valueOf(usuarioLogado)))
-                continue;
-            if (i.getType() == ItemType.ACCESSORY)
+            if (!i.getOwnerId().equals(String.valueOf(usuarioLogado)) || !i.podeLavar())
                 continue;
 
             itensLavaveis.add(i);

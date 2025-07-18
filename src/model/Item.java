@@ -1,6 +1,12 @@
 package model;
 
-public abstract class Item {
+import java.util.List;
+
+import dao.EmprestimoDAO;
+import interfaces.IEmprestavel;
+import interfaces.ILavavel;
+
+public abstract class Item implements ILavavel, IEmprestavel {
     protected int id;
     protected String ownerId;
     protected ItemType type;
@@ -21,6 +27,18 @@ public abstract class Item {
         this.storeOfOrigin = storeOfOrigin;
         this.imagePath = imagePath;
         this.conservation = conservation;
+    }
+
+    @Override
+    public boolean podeLavar() {
+        return this.type != ItemType.ACCESSORY;
+    }
+
+    @Override
+    public boolean podeEmprestar() {
+        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        List<Integer> jaEmprestados = emprestimoDAO.getIdsDeItensEmprestados();
+        return this.type != ItemType.UNDERWEAR || !jaEmprestados.contains(this.id);
     }
 
     // Getters e Setters
