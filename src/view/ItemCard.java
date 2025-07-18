@@ -43,7 +43,7 @@ public class ItemCard extends JPanel {
         infoPanel.add(new JLabel("Marca: " + item.getStoreOfOrigin()));
         infoPanel.add(new JLabel("Conservação: " + item.getConservation()));
         if (!souDono) {
-            infoPanel.add(new JLabel("💡 Emprestado para você"));
+            infoPanel.add(new JLabel("Emprestado para você"));
         }
 
         // Painel de botões

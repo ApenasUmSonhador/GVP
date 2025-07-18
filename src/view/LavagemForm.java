@@ -47,13 +47,10 @@ public class LavagemForm extends JFrame {
     }
 
     private void carregarItensLavaveis() {
-        itensLavaveis = new ArrayList<>();
-        List<Item> todos = new ItemDAO().listarNaoEmprestadosDoUsuario(String.valueOf(usuarioLogado));
+        List<Item> todos = new ItemDAO().listarLavaveis(String.valueOf(usuarioLogado));
+        this.itensLavaveis = new ArrayList<>();
         for (Item i : todos) {
-            if (!i.getOwnerId().equals(String.valueOf(usuarioLogado)) || !i.podeLavar())
-                continue;
-
-            itensLavaveis.add(i);
+            this.itensLavaveis.add(i);
 
             JCheckBox cb = new JCheckBox(
                     String.format("ID %d - %s (%s)", i.getId(), i.getType(), i.getColor()));

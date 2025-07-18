@@ -64,13 +64,11 @@ public class EmprestimoForm extends JFrame {
 
     private void carregarItens() {
         ItemDAO itemDAO = new ItemDAO();
-        int meuId = Session.getUsuario().getId();
-        List<Item> todos = itemDAO.listarPorDono(String.valueOf(meuId));
-
-        for (Item i : todos) {
-            if (i.podeEmprestar()) {
-                cbItens.addItem(i);
-            }
+        int user_id = Session.getUsuario().getId();
+        List<Item> itens = itemDAO.listarEmprestaveis(String.valueOf(user_id));
+        cbItens.removeAllItems();
+        for (Item item : itens) {
+            cbItens.addItem(item);
         }
 
         if (cbItens.getItemCount() == 0) {

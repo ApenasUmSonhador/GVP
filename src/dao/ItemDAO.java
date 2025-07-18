@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ItemDAO {
 
@@ -399,4 +400,16 @@ public class ItemDAO {
         return mapa;
     }
 
+    public List<Item> listarEmprestaveis(String userId) {
+        return listarPorDono(userId).stream()
+                .filter(Item::podeEmprestar)
+                .collect(Collectors.toList());
+    }
+
+    public List<Item> listarLavaveis(String userId) {
+        return listarPorDono(userId).stream()
+                .filter(Item::podeLavar)
+                .filter(item -> !item.getOwnerId().equals(String.valueOf(userId)))
+                .collect(Collectors.toList());
+    }
 }
