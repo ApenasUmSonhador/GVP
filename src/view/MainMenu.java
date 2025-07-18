@@ -14,13 +14,13 @@ public class MainMenu extends JFrame {
         setLayout(new BorderLayout(10, 10));
 
         // Botão de tema no topo
-        JButton btnTema = new JButton(TemaManager.isModoEscuro() ? "☀️ Claro" : "🌙 Escuro");
+        JButton btnTema = new JButton(TemaManager.isModoEscuro() ? "Claro" : "Escuro");
         btnTema.setFocusPainted(false);
         btnTema.setBorderPainted(false);
         btnTema.addActionListener(e -> {
             TemaManager.alternarTema();
             TemaManager.aplicarTema(this);
-            btnTema.setText(TemaManager.isModoEscuro() ? "☀️ Claro" : "🌙 Escuro");
+            btnTema.setText(TemaManager.isModoEscuro() ? "Claro" : "Escuro");
         });
 
         JPanel painelTopo = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));

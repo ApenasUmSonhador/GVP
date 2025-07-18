@@ -29,7 +29,7 @@ public class LookUsoForm extends JDialog {
         JButton btnSalvar = new JButton("Salvar");
         JButton btnCancelar = new JButton("Cancelar");
 
-        add(new JLabel("Data (AAAA-MM-DD):"));
+        add(new JLabel("Data (DD-MM-AAAA):"));
         add(txtData);
         add(new JLabel("Turno:"));
         add(cbTurno);
