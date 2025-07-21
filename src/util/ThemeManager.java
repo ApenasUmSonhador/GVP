@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TemaManager {
+public class ThemeManager {
 
     private static boolean modoEscuro = false;
 

@@ -3,7 +3,7 @@ package util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SenhaUtil {
+public class HashingUtil {
 
     public static String gerarHash(String senha) {
         try {

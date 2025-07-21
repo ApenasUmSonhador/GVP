@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface ILavavel {
+public interface IWashable {
     boolean podeLavar();
 }

@@ -3,7 +3,7 @@ package view;
 import dao.LookUsoDAO;
 import model.Look;
 import model.LookUso;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,10 +17,12 @@ public class LookUsoForm extends JDialog {
         super(parent, "Registrar Uso do Look: " + look.getNome(), true);
         this.look = look;
 
+        // Definições da Janela
         setSize(400, 300);
         setLayout(new GridLayout(5, 2, 10, 10));
         setLocationRelativeTo(parent);
 
+        // Ações
         JTextField txtData = new JTextField(LocalDate.now().toString());
         JComboBox<String> cbTurno = new JComboBox<>(new String[] { "manhã", "tarde", "noite" });
         JTextArea txtContexto = new JTextArea(3, 20);
@@ -29,6 +31,7 @@ public class LookUsoForm extends JDialog {
         JButton btnSalvar = new JButton("Salvar");
         JButton btnCancelar = new JButton("Cancelar");
 
+        // Botões
         add(new JLabel("Data (DD-MM-AAAA):"));
         add(txtData);
         add(new JLabel("Turno:"));
@@ -38,6 +41,7 @@ public class LookUsoForm extends JDialog {
         add(btnSalvar);
         add(btnCancelar);
 
+        // Listeners
         btnSalvar.addActionListener(e -> {
             try {
                 LocalDate data = LocalDate.parse(txtData.getText().trim());
@@ -61,8 +65,8 @@ public class LookUsoForm extends JDialog {
         });
 
         btnCancelar.addActionListener(e -> dispose());
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 }

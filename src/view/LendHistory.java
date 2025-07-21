@@ -4,7 +4,7 @@ import dao.EmprestimoDAO;
 import model.EmprestimoComInfo;
 import model.Item;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,11 +14,11 @@ import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 import java.util.List;
 
-public class EmprestimoHistorico extends JFrame {
+public class LendHistory extends JFrame {
 
     private JPanel painel;
 
-    public EmprestimoHistorico() {
+    public LendHistory() {
         setTitle("Histórico de Empréstimos");
         setSize(800, 600);
         setLayout(new BorderLayout());
@@ -31,8 +31,8 @@ public class EmprestimoHistorico extends JFrame {
 
         carregarHistorico();
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 

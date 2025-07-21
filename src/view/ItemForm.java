@@ -2,7 +2,7 @@ package view;
 
 import model.*;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 import dao.ItemDAO;
 
 import javax.swing.*;
@@ -124,8 +124,8 @@ public class ItemForm extends JFrame {
         }
 
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 

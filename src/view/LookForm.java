@@ -6,7 +6,7 @@ import model.Item;
 import model.ItemType;
 import model.Look;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +22,7 @@ public class LookForm extends JFrame {
     private JTextField nomeField;
 
     public LookForm() {
+        // Definições da Janela
         setTitle("Montar Look");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -68,11 +69,12 @@ public class LookForm extends JFrame {
         add(painelBotoes, BorderLayout.SOUTH);
 
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 
+    // Ações
     private void salvarLook() {
         String nome = nomeField.getText().trim();
         if (nome.isEmpty()) {

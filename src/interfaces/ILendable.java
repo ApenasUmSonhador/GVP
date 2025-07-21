@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface IEmprestavel {
+public interface ILendable {
     boolean podeEmprestar();
 }

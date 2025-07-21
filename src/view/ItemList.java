@@ -3,7 +3,7 @@ package view;
 import dao.ItemDAO;
 import model.Item;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +31,8 @@ public class ItemList extends JFrame {
         add(btnNovo, BorderLayout.SOUTH);
 
         atualizarItens();
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setLocationRelativeTo(null);
         setVisible(true);
     }

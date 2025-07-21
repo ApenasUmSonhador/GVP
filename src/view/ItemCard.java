@@ -73,7 +73,7 @@ public class ItemCard extends JPanel {
             boolean estaEmprestado = emprestimoDAO.estaEmprestado(item.getId());
             if (!estaEmprestado) {
                 JButton btnEmprestar = new JButton("Emprestar");
-                btnEmprestar.addActionListener(e -> new EmprestimoForm(item, onUpdate));
+                btnEmprestar.addActionListener(e -> new LendForm(item, onUpdate));
                 btnPanel.add(btnEmprestar);
             }
 

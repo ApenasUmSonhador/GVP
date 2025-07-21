@@ -3,10 +3,10 @@ package model;
 import java.util.List;
 
 import dao.EmprestimoDAO;
-import interfaces.IEmprestavel;
-import interfaces.ILavavel;
+import interfaces.ILendable;
+import interfaces.IWashable;
 
-public abstract class Item implements ILavavel, IEmprestavel {
+public abstract class Item implements IWashable, ILendable {
     protected int id;
     protected String ownerId;
     protected ItemType type;

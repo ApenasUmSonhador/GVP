@@ -2,7 +2,7 @@ package dao;
 
 import model.Usuario;
 import util.DBConnector;
-import util.SenhaUtil;
+import util.HashingUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class UsuarioDAO {
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, usuario.getNome());
             pstmt.setString(2, usuario.getLogin());
-            pstmt.setString(3, SenhaUtil.gerarHash(usuario.getSenha()));
+            pstmt.setString(3, HashingUtil.gerarHash(usuario.getSenha()));
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -52,7 +52,7 @@ public class UsuarioDAO {
         try (Connection conn = DBConnector.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, login);
-            pstmt.setString(2, SenhaUtil.gerarHash(senha));
+            pstmt.setString(2, HashingUtil.gerarHash(senha));
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {

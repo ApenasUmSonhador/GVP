@@ -6,9 +6,9 @@ import model.Usuario;
 import javax.swing.*;
 import java.awt.*;
 
-public class CadastroUsuarioForm extends JFrame {
+public class RegisterUserForm extends JFrame {
 
-    public CadastroUsuarioForm() {
+    public RegisterUserForm() {
         setTitle("Cadastro de Usuário");
         setSize(350, 250);
         setLayout(new GridLayout(5, 2, 5, 5));

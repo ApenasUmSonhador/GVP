@@ -7,7 +7,7 @@ import model.Item;
 import model.Look;
 import model.LookUso;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class LookList extends JFrame {
 
     public LookList() {
+        // Definições de Janela
         setTitle("Looks Montados");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1000, 600);
@@ -55,8 +56,8 @@ public class LookList extends JFrame {
         add(btnFechar, BorderLayout.SOUTH);
 
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 
@@ -111,6 +112,7 @@ public class LookList extends JFrame {
             }
         });
 
+        // Botões adicionados ao painel
         botoes.add(btnVerDetalhes);
         botoes.add(btnRegistrarUso);
         botoes.add(btnExcluir);
@@ -156,7 +158,7 @@ public class LookList extends JFrame {
             }
         }
 
-        // 🔹 Usos do look
+        // Usos do look
         painelPrincipal.add(new JSeparator());
         painelPrincipal.add(Box.createVerticalStrut(10));
         JLabel usosLabel = new JLabel("📖 Usos registrados:");
@@ -193,6 +195,7 @@ public class LookList extends JFrame {
         dialog.setVisible(true);
     }
 
+    // Ações
     private JPanel criarBlocoComImagem(Item item) {
         JPanel bloco = new JPanel();
         bloco.setLayout(new BoxLayout(bloco, BoxLayout.Y_AXIS));

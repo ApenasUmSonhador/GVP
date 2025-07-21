@@ -3,18 +3,19 @@ package view;
 import dao.ItemDAO;
 import dao.LavagemDAO;
 import model.*;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
 
-public class LavagemHistorico extends JFrame {
+public class WashHistory extends JFrame {
 
     private final String usuarioLogado = String.valueOf(util.Session.getUsuario().getId());
 
-    public LavagemHistorico() {
+    public WashHistory() {
+        // Definições de Janela
         setTitle("Histórico de Lavagens");
         setSize(600, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -58,14 +59,16 @@ public class LavagemHistorico extends JFrame {
             }
         }
 
+        // Botões
         JScrollPane scrollPane = new JScrollPane(painel);
         add(scrollPane, BorderLayout.CENTER);
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 
+    // Método para carregar imagem com tamanho fixo
     private ImageIcon carregarImagem(String path, int width, int height) {
         try {
             File imgFile = new File(path);

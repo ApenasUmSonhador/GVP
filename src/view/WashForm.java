@@ -3,7 +3,7 @@ package view;
 import dao.ItemDAO;
 import dao.LavagemDAO;
 import model.*;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LavagemForm extends JFrame {
+public class WashForm extends JFrame {
 
     private JPanel checkboxPanel;
     private JButton btnRegistrar;
@@ -19,7 +19,7 @@ public class LavagemForm extends JFrame {
     private List<Item> itensLavaveis;
     private final int usuarioLogado = util.Session.getUsuario().getId();
 
-    public LavagemForm() {
+    public WashForm() {
         setTitle("Registrar Lavagem");
         setSize(400, 500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,8 +40,8 @@ public class LavagemForm extends JFrame {
         btnRegistrar.addActionListener(e -> registrarLavagem());
         add(btnRegistrar, BorderLayout.SOUTH);
 
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setLocationRelativeTo(null);
         setVisible(true);
     }

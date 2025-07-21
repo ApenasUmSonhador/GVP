@@ -8,21 +8,21 @@ import model.Item;
 import model.ItemType;
 import model.Usuario;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public class EmprestimoForm extends JFrame {
+public class LendForm extends JFrame {
 
     private JComboBox<Item> cbItens;
     private JComboBox<Usuario> cbUsuarios;
     private JButton btnEmprestar;
     private Runnable onUpdate;
 
-    public EmprestimoForm() {
+    public LendForm() {
         setTitle("Emprestar Item");
         setSize(400, 250);
         setLayout(new GridLayout(4, 1, 10, 10));
@@ -49,12 +49,12 @@ public class EmprestimoForm extends JFrame {
         btnEmprestar.addActionListener(e -> realizarEmprestimo());
 
         setLocationRelativeTo(null);
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 
-    public EmprestimoForm(Item itemPreSelecionado, Runnable onUpdate) {
+    public LendForm(Item itemPreSelecionado, Runnable onUpdate) {
         this();
         this.onUpdate = onUpdate;
         if (itemPreSelecionado != null) {

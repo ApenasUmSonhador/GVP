@@ -4,7 +4,7 @@ import dao.*;
 import model.Item;
 import model.ItemType;
 import util.Session;
-import util.TemaManager;
+import util.ThemeManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EstatisticasView extends JFrame {
+public class EstatisticsView extends JFrame {
 
-    public EstatisticasView() {
+    public EstatisticsView() {
         setTitle("Estatísticas do Guarda-Roupa");
         setSize(650, 700);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -107,8 +107,8 @@ public class EstatisticasView extends JFrame {
         painelBotao.add(btnFechar);
         add(painelBotao, BorderLayout.SOUTH);
 
-        TemaManager.aplicarTema(this);
-        TemaManager.registrarJanela(this);
+        ThemeManager.aplicarTema(this);
+        ThemeManager.registrarJanela(this);
         setVisible(true);
     }
 }
