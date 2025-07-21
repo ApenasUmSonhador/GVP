@@ -54,7 +54,7 @@ GVP/
 
 4. Execute o projeto via:
 ```bash
-   java -cp ".:lib/sqlite-jdbc-3.43.0.0.jar:src" Main    
+   java -cp ".:lib/sqlite-jdbc-3.43.0.0.jar:bin" Main      
 ```
 
 ## 📌 Requisitos
