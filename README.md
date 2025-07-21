@@ -47,11 +47,15 @@ GVP/
 
 2. Abra na sua IDE de preferência com suporte a projetos Java.
 
-3. Execute a classe `view.LoginForm` ou `view.MainMenu`.
+3. Compile o projeto via:
+```bash
+   javac -cp ".:lib/*" -d bin src/**/*.java    
+```
 
-## 🧪 Testes
-
-Em breve serão adicionados testes automatizados com JUnit.
+4. Execute o projeto via:
+```bash
+   java -cp ".:lib/sqlite-jdbc-3.43.0.0.jar:src" Main    
+```
 
 ## 📌 Requisitos
 
