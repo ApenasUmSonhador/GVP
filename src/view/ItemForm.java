@@ -28,8 +28,12 @@ public class ItemForm extends JFrame {
 
         setTitle(itemEditando == null ? "Cadastrar Item" : "Editar Item");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(400, 400);
-        setLayout(new GridLayout(8, 2, 5, 5));
+        setSize(500, 450);
+        setLayout(new BorderLayout());
+
+        JPanel painelForm = new JPanel();
+        painelForm.setLayout(new BoxLayout(painelForm, BoxLayout.Y_AXIS));
+        painelForm.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         cbType = new JComboBox<>(ItemType.values());
         txtColor = new JTextField();
@@ -42,22 +46,18 @@ public class ItemForm extends JFrame {
         JButton btnSalvar = new JButton(itemParaEditar == null ? "Salvar" : "Atualizar");
 
         // Adiciona campos ao formulário
-        add(new JLabel("Tipo:"));
-        add(cbType);
-        add(new JLabel("Cor:*"));
-        add(txtColor);
-        add(new JLabel("Tamanho:*"));
-        add(txtSize);
-        add(new JLabel("Loja de Origem:*"));
-        add(txtStore);
-        add(new JLabel("Imagem:"));
-        add(txtImage);
-        add(btnImage);
-        add(new JLabel("Conservação:"));
-        add(cbConservation);
-        add(btnSalvar);
+        painelForm.add(rotulado("Tipo:*", cbType));
+        painelForm.add(rotulado("Cor:*", txtColor));
+        painelForm.add(rotulado("Tamanho:*", txtSize));
+        painelForm.add(rotulado("Loja de Origem:*", txtStore));
+        painelForm.add(rotulado("Imagem:", txtImage));
+        painelForm.add(rotulado("", btnImage));
+        painelForm.add(rotulado("Nível de Conservação:*", cbConservation));
+        painelForm.add(Box.createVerticalStrut(10));
+        painelForm.add(btnSalvar);
 
-        // Botão para escolher imagem
+        add(painelForm, BorderLayout.CENTER);
+
         btnImage.addActionListener((ActionEvent e) -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File("img/"));
@@ -89,7 +89,7 @@ public class ItemForm extends JFrame {
 
             Item item = new Item(
                     itemEditando == null ? 0 : itemEditando.getId(),
-                    String.valueOf(util.Session.getUsuario().getId()),
+                    String.valueOf(Session.getUsuario().getId()),
                     (ItemType) cbType.getSelectedItem(),
                     color,
                     size,
@@ -136,5 +136,15 @@ public class ItemForm extends JFrame {
         txtStore.setText("");
         txtImage.setText("img/placeholder.png");
         cbConservation.setSelectedIndex(0);
+    }
+
+    private JPanel rotulado(String titulo, JComponent campo) {
+        JPanel painel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel label = new JLabel(titulo);
+        label.setPreferredSize(new Dimension(150, 25));
+        campo.setPreferredSize(new Dimension(280, 25));
+        painel.add(label);
+        painel.add(campo);
+        return painel;
     }
 }
