@@ -1,7 +1,7 @@
 package view;
 
-import dao.EmprestimoDAO;
-import model.EmprestimoComInfo;
+import dao.LendDAO;
+import model.LendWithInfo;
 import model.Item;
 import util.Session;
 import util.ThemeManager;
@@ -38,14 +38,14 @@ public class LendHistory extends JFrame {
 
     private void carregarHistorico() {
         painel.removeAll();
-        EmprestimoDAO dao = new EmprestimoDAO();
+        LendDAO dao = new LendDAO();
         int userId = Session.getUsuario().getId();
-        List<EmprestimoComInfo> historico = dao.listarHistoricoCompletoPara(userId);
+        List<LendWithInfo> historico = dao.listarHistoricoCompletoPara(userId);
 
         if (historico.isEmpty()) {
             painel.add(new JLabel("Você ainda não participou de nenhum empréstimo."));
         } else {
-            for (EmprestimoComInfo e : historico) {
+            for (LendWithInfo e : historico) {
                 String direcao = Session.getUsuario().getNome().equals(e.getNomeDe())
                         ? "Emprestado para: " + e.getNomePara()
                         : "Recebido de: " + e.getNomeDe();
@@ -57,7 +57,7 @@ public class LendHistory extends JFrame {
         painel.repaint();
     }
 
-    private JPanel criarCard(EmprestimoComInfo emprestimo, String direcao) {
+    private JPanel criarCard(LendWithInfo emprestimo, String direcao) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         card.setMaximumSize(new Dimension(Integer.MAX_VALUE, 120));

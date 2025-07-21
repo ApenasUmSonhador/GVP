@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
-public class Emprestimo {
+public class Lend {
     private int id;
     private int itemId;
     private int deUsuarioId;
@@ -10,7 +10,7 @@ public class Emprestimo {
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao; // pode ser null
 
-    public Emprestimo(int id, int itemId, int deUsuarioId, int paraUsuarioId, LocalDate dataEmprestimo,
+    public Lend(int id, int itemId, int deUsuarioId, int paraUsuarioId, LocalDate dataEmprestimo,
             LocalDate dataDevolucao) {
         this.id = id;
         this.itemId = itemId;

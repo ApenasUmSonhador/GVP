@@ -24,10 +24,10 @@ public class EstatisticsView extends JFrame {
         String userId = String.valueOf(Session.getUsuario().getId());
 
         ItemDAO itemDAO = new ItemDAO();
-        LavagemDAO lavagemDAO = new LavagemDAO();
+        WashDAO lavagemDAO = new WashDAO();
         LookDAO lookDAO = new LookDAO();
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
-        LookUsoDAO usoDAO = new LookUsoDAO();
+        LendDAO emprestimoDAO = new LendDAO();
+        LookUseDAO usoDAO = new LookUseDAO();
 
         List<Item> itens = itemDAO.listarPorDono(userId);
         int totalItens = itens.size();

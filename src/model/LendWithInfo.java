@@ -2,14 +2,14 @@ package model;
 
 import java.time.LocalDate;
 
-public class EmprestimoComInfo {
+public class LendWithInfo {
     private Item item;
     private String nomeDe;
     private String nomePara;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
 
-    public EmprestimoComInfo(Item item, String nomeDe, String nomePara, LocalDate dataEmprestimo,
+    public LendWithInfo(Item item, String nomeDe, String nomePara, LocalDate dataEmprestimo,
             LocalDate dataDevolucao) {
         this.item = item;
         this.nomeDe = nomeDe;

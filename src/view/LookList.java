@@ -2,10 +2,10 @@ package view;
 
 import dao.ItemDAO;
 import dao.LookDAO;
-import dao.LookUsoDAO;
+import dao.LookUseDAO;
 import model.Item;
 import model.Look;
-import model.LookUso;
+import model.LookUse;
 import util.Session;
 import util.ThemeManager;
 
@@ -167,15 +167,15 @@ public class LookList extends JFrame {
         painelPrincipal.add(usosLabel);
         painelPrincipal.add(Box.createVerticalStrut(5));
 
-        LookUsoDAO usoDAO = new LookUsoDAO();
-        List<LookUso> usos = usoDAO.listarPorLook(look.getId());
+        LookUseDAO usoDAO = new LookUseDAO();
+        List<LookUse> usos = usoDAO.listarPorLook(look.getId());
 
         if (usos.isEmpty()) {
             JLabel nenhum = new JLabel("Ainda não há registros de uso.");
             nenhum.setAlignmentX(Component.CENTER_ALIGNMENT);
             painelPrincipal.add(nenhum);
         } else {
-            for (LookUso uso : usos) {
+            for (LookUse uso : usos) {
                 JLabel lbl = new JLabel(uso.toString());
                 lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
                 painelPrincipal.add(lbl);

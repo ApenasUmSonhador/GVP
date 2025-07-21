@@ -1,7 +1,7 @@
 package view;
 
 import dao.ItemDAO;
-import dao.LavagemDAO;
+import dao.WashDAO;
 import model.*;
 import util.ThemeManager;
 
@@ -24,7 +24,7 @@ public class WashHistory extends JFrame {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
 
-        List<Lavagem> lavagens = new LavagemDAO().getLavagensDoUsuario(usuarioLogado);
+        List<Lavagem> lavagens = new WashDAO().getLavagensDoUsuario(usuarioLogado);
         ItemDAO itemDAO = new ItemDAO();
 
         if (lavagens.isEmpty()) {

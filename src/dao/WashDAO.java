@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LavagemDAO {
+public class WashDAO {
 
-    public LavagemDAO() {
+    public WashDAO() {
         criarTabelas();
     }
 

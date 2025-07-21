@@ -1,6 +1,6 @@
 package dao;
 
-import model.Usuario;
+import model.User;
 import util.DBConnector;
 import util.HashingUtil;
 
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UsuarioDAO {
+public class UserDAO {
 
-    public UsuarioDAO() {
+    public UserDAO() {
         criarTabela();
     }
 
@@ -32,7 +32,7 @@ public class UsuarioDAO {
         }
     }
 
-    public boolean cadastrar(Usuario usuario) {
+    public boolean cadastrar(User usuario) {
         String sql = "INSERT INTO usuario (nome, login, senha) VALUES (?, ?, ?)";
         try (Connection conn = DBConnector.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -47,7 +47,7 @@ public class UsuarioDAO {
         }
     }
 
-    public Optional<Usuario> autenticar(String login, String senha) {
+    public Optional<User> autenticar(String login, String senha) {
         String sql = "SELECT * FROM usuario WHERE login = ? AND senha = ?";
         try (Connection conn = DBConnector.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -56,7 +56,7 @@ public class UsuarioDAO {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                Usuario u = new Usuario(
+                User u = new User(
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("login"),
@@ -71,14 +71,14 @@ public class UsuarioDAO {
         return Optional.empty();
     }
 
-    public List<Usuario> listarTodos() {
-        List<Usuario> usuarios = new ArrayList<>();
+    public List<User> listarTodos() {
+        List<User> usuarios = new ArrayList<>();
         String sql = "SELECT * FROM usuario";
         try (Connection conn = DBConnector.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Usuario u = new Usuario(
+                User u = new User(
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("login"),

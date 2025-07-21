@@ -1,6 +1,6 @@
 package dao;
 
-import model.LookUso;
+import model.LookUse;
 import util.DBConnector;
 
 import java.sql.*;
@@ -8,9 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LookUsoDAO {
+public class LookUseDAO {
 
-    public LookUsoDAO() {
+    public LookUseDAO() {
         criarTabela();
     }
 
@@ -35,7 +35,7 @@ public class LookUsoDAO {
         }
     }
 
-    public void inserir(LookUso uso) {
+    public void inserir(LookUse uso) {
         String sql = "INSERT INTO look_uso (look_id, data, turno, contexto) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DBConnector.connect();
@@ -50,8 +50,8 @@ public class LookUsoDAO {
         }
     }
 
-    public List<LookUso> listarPorLook(int lookId) {
-        List<LookUso> lista = new ArrayList<>();
+    public List<LookUse> listarPorLook(int lookId) {
+        List<LookUse> lista = new ArrayList<>();
         String sql = "SELECT * FROM look_uso WHERE look_id = ? ORDER BY data DESC";
 
         try (Connection conn = DBConnector.connect();
@@ -59,7 +59,7 @@ public class LookUsoDAO {
             stmt.setInt(1, lookId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                LookUso uso = new LookUso(
+                LookUse uso = new LookUse(
                         rs.getInt("id"),
                         rs.getInt("look_id"),
                         LocalDate.parse(rs.getString("data")),

@@ -1,8 +1,8 @@
 package view;
 
-import dao.LookUsoDAO;
+import dao.LookUseDAO;
 import model.Look;
-import model.LookUso;
+import model.LookUse;
 import util.ThemeManager;
 
 import javax.swing.*;
@@ -53,8 +53,8 @@ public class LookUsoForm extends JDialog {
                     return;
                 }
 
-                LookUso uso = new LookUso(0, look.getId(), data, turno, contexto);
-                new LookUsoDAO().inserir(uso);
+                LookUse uso = new LookUse(0, look.getId(), data, turno, contexto);
+                new LookUseDAO().inserir(uso);
                 JOptionPane.showMessageDialog(this, "Uso registrado com sucesso!");
                 dispose();
 

@@ -1,8 +1,8 @@
 package dao;
 
 import model.ConservationLevel;
-import model.Emprestimo;
-import model.EmprestimoComInfo;
+import model.Lend;
+import model.LendWithInfo;
 import model.Item;
 import model.ItemType;
 import util.DBConnector;
@@ -12,9 +12,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmprestimoDAO {
+public class LendDAO {
 
-    public EmprestimoDAO() {
+    public LendDAO() {
         criarTabela();
     }
 
@@ -37,7 +37,7 @@ public class EmprestimoDAO {
         }
     }
 
-    public void registrarEmprestimo(Emprestimo emp) {
+    public void registrarEmprestimo(Lend emp) {
         String sql = """
                     INSERT INTO emprestimo (item_id, de_usuario_id, para_usuario_id, data_emprestimo)
                     VALUES (?, ?, ?, ?)
@@ -115,8 +115,8 @@ public class EmprestimoDAO {
         return false;
     }
 
-    public List<EmprestimoComInfo> listarHistoricoCompletoPara(int usuarioId) {
-        List<EmprestimoComInfo> lista = new ArrayList<>();
+    public List<LendWithInfo> listarHistoricoCompletoPara(int usuarioId) {
+        List<LendWithInfo> lista = new ArrayList<>();
 
         String sql = """
                     SELECT e.*, i.*,
@@ -153,7 +153,7 @@ public class EmprestimoDAO {
                         ? LocalDate.parse(rs.getString("data_devolucao"))
                         : null;
 
-                lista.add(new EmprestimoComInfo(
+                lista.add(new LendWithInfo(
                         item,
                         rs.getString("de_nome"),
                         rs.getString("para_nome"),

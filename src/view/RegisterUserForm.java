@@ -1,7 +1,7 @@
 package view;
 
-import dao.UsuarioDAO;
-import model.Usuario;
+import dao.UserDAO;
+import model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,8 +37,8 @@ public class RegisterUserForm extends JFrame {
                 return;
             }
 
-            Usuario usuario = new Usuario(0, nome, login, senha);
-            boolean sucesso = new UsuarioDAO().cadastrar(usuario);
+            User usuario = new User(0, nome, login, senha);
+            boolean sucesso = new UserDAO().cadastrar(usuario);
             if (sucesso) {
                 JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
                 dispose();

@@ -1,12 +1,12 @@
 package view;
 
-import dao.EmprestimoDAO;
+import dao.LendDAO;
 import dao.ItemDAO;
-import dao.UsuarioDAO;
-import model.Emprestimo;
+import dao.UserDAO;
+import model.Lend;
 import model.Item;
 import model.ItemType;
-import model.Usuario;
+import model.User;
 import util.Session;
 import util.ThemeManager;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class LendForm extends JFrame {
 
     private JComboBox<Item> cbItens;
-    private JComboBox<Usuario> cbUsuarios;
+    private JComboBox<User> cbUsuarios;
     private JButton btnEmprestar;
     private Runnable onUpdate;
 
@@ -78,10 +78,10 @@ public class LendForm extends JFrame {
     }
 
     private void carregarUsuarios() {
-        UsuarioDAO dao = new UsuarioDAO();
-        List<Usuario> usuarios = dao.listarTodos();
+        UserDAO dao = new UserDAO();
+        List<User> usuarios = dao.listarTodos();
 
-        for (Usuario u : usuarios) {
+        for (User u : usuarios) {
             if (u.getId() != Session.getUsuario().getId()) {
                 cbUsuarios.addItem(u);
             }
@@ -95,14 +95,14 @@ public class LendForm extends JFrame {
 
     private void realizarEmprestimo() {
         Item item = (Item) cbItens.getSelectedItem();
-        Usuario destino = (Usuario) cbUsuarios.getSelectedItem();
+        User destino = (User) cbUsuarios.getSelectedItem();
 
         if (item == null || destino == null) {
             JOptionPane.showMessageDialog(this, "Selecione o item e o usuário!");
             return;
         }
 
-        Emprestimo emp = new Emprestimo(
+        Lend emp = new Lend(
                 0,
                 item.getId(),
                 Session.getUsuario().getId(),
@@ -110,7 +110,7 @@ public class LendForm extends JFrame {
                 LocalDate.now(),
                 null);
 
-        new EmprestimoDAO().registrarEmprestimo(emp);
+        new LendDAO().registrarEmprestimo(emp);
         JOptionPane.showMessageDialog(this, "Empréstimo realizado com sucesso!");
         if (onUpdate != null) {
             onUpdate.run();

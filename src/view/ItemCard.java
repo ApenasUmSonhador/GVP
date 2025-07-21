@@ -1,6 +1,6 @@
 package view;
 
-import dao.EmprestimoDAO;
+import dao.LendDAO;
 import dao.ItemDAO;
 import model.Item;
 import util.Session;
@@ -48,7 +48,7 @@ public class ItemCard extends JPanel {
 
         // Painel de botões
         JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        LendDAO emprestimoDAO = new LendDAO();
 
         if (souDono) {
             JButton btnEditar = new JButton("Editar");

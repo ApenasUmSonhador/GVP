@@ -1,7 +1,7 @@
 package view;
 
 import dao.ItemDAO;
-import dao.LavagemDAO;
+import dao.WashDAO;
 import model.*;
 import util.ThemeManager;
 
@@ -80,7 +80,7 @@ public class WashForm extends JFrame {
         }
 
         Lavagem lavagem = new Lavagem(0, LocalDate.now(), selecionados);
-        new LavagemDAO().inserirLavagem(lavagem);
+        new WashDAO().inserirLavagem(lavagem);
 
         JOptionPane.showMessageDialog(this, "Lavagem registrada com sucesso!");
         dispose();

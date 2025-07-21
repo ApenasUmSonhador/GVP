@@ -1,7 +1,7 @@
 package view;
 
-import dao.UsuarioDAO;
-import model.Usuario;
+import dao.UserDAO;
+import model.User;
 import util.Session;
 import util.ThemeManager;
 
@@ -36,7 +36,7 @@ public class LoginForm extends JFrame {
             String login = txtLogin.getText().trim();
             String senha = new String(txtSenha.getPassword());
 
-            UsuarioDAO dao = new UsuarioDAO();
+            UserDAO dao = new UserDAO();
             dao.autenticar(login, senha).ifPresentOrElse(usuario -> {
                 Session.login(usuario);
                 JOptionPane.showMessageDialog(this, "Bem-vindo, " + usuario.getNome());

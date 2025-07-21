@@ -1,15 +1,15 @@
 package util;
 
-import model.Usuario;
+import model.User;
 
 public class Session {
-    private static Usuario usuarioLogado;
+    private static User usuarioLogado;
 
-    public static void login(Usuario usuario) {
+    public static void login(User usuario) {
         usuarioLogado = usuario;
     }
 
-    public static Usuario getUsuario() {
+    public static User getUsuario() {
         return usuarioLogado;
     }
 

@@ -88,7 +88,7 @@ public class ItemDAO {
 
     public List<Item> listarPorDono(String ownerId) {
         List<Item> lista = new ArrayList<>();
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        LendDAO emprestimoDAO = new LendDAO();
         List<Integer> idsEmprestados = emprestimoDAO.getIdsDeItensEmprestados();
 
         String sql = "SELECT * FROM item WHERE owner_id = ?";

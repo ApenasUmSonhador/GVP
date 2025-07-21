@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import dao.EmprestimoDAO;
+import dao.LendDAO;
 import interfaces.ILendable;
 import interfaces.IWashable;
 
@@ -36,7 +36,7 @@ public abstract class Item implements IWashable, ILendable {
 
     @Override
     public boolean podeEmprestar() {
-        EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
+        LendDAO emprestimoDAO = new LendDAO();
         List<Integer> jaEmprestados = emprestimoDAO.getIdsDeItensEmprestados();
         return this.type != ItemType.UNDERWEAR || !jaEmprestados.contains(this.id);
     }
